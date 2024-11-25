@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client de Streaming</title>
+</head>
+<body>
+<h1>HOLA</h1>
+<video id="video" autoplay></video>
+<script>
+    const videoElement = document.getElementById("video");
+    const ws = new WebSocket("ws://localhost:8080/stream");
+
+    ws.binaryType = "arraybuffer";
+
+    ws.onmessage = async (event) => {
+        // Aquí desencriptaràs el flux rebut abans de reproduir-lo
+        const encryptedData = new Uint8Array(event.data);
+        const decryptedData = await decryptData(encryptedData);
+
+        // Convertim els bytes en un blob i el reproduïm
+        const blob = new Blob([decryptedData], { type: "video/webm" });
+        videoElement.src = URL.createObjectURL(blob);
+    };
+
+    async function decryptData(encryptedData) {
+        const key = await window.crypto.subtle.importKey(
+            "raw",
+            new Uint8Array([/* La clau generada al servidor */]),
+            "AES-CBC",
+            false,
+            ["decrypt"]
+        );
+
+        return window.crypto.subtle.decrypt(
+            { name: "AES-CBC", iv: encryptedData.slice(0, 16) },
+            key,
+            encryptedData.slice(16)
+        );
+    }
+</script>
+</body>
+</html>
