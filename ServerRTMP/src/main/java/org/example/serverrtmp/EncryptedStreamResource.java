@@ -33,6 +33,7 @@ public class EncryptedStreamResource {
             byte[] playlistBytes = fis.readAllBytes();
             return Response.ok(playlistBytes)
                     .header("Content-Disposition", "inline; filename=stream1.m3u8")
+                    .header("Access-Control-Allow-Origin", "*")
                     .build();
         } catch (IOException e) {
             e.printStackTrace();
@@ -62,7 +63,7 @@ public class EncryptedStreamResource {
 
 
    @GET
-    @Path("/segment/{file}")
+    @Path("/{file}")
     @Produces("application/octet-stream")
     public Response getEncryptedSegment(@PathParam("file") String fileName) {
 
@@ -82,6 +83,7 @@ public class EncryptedStreamResource {
             byte[] fileBytes = fis.readAllBytes();
             return Response.ok(fileBytes)           //quitar esto
                     .header("Content-Disposition", "attachment; filename=" + fileName)
+                    .header("Access-Control-Allow-Origin", "*")
                     .build();
             // Cifrar el segmento
             /*System.out.println("Iniciando encriptación para: " + fileName);

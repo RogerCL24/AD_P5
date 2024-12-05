@@ -17,7 +17,7 @@
 
 <!-- Contenedor para el reproductor -->
 <video id="video_player" class="video-js vjs-default-skin" controls width="800" height="450">
-    <source src="http://localhost:8080/api/encryptedStream/stream1.m3u8" type="application/x-mpegURL">
+    <source src="http://localhost:5080/ServerRTMP-1.0-SNAPSHOT/api/encryptedStream/playlist.m3u8" type="application/x-mpegURL">
     Tu navegador no soporta la reproducción de este video.
 </video>
 
