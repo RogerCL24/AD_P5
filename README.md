@@ -8,5 +8,6 @@ Y ejecutas
 ```cmd
 asadmin create-domain --portbase 5000 domain2
 ```
-Pones todo default y ya esta
-Depues en el intellij haces edit config de glassfish y le pones el domain2.
+Pones todo default y ya esta.
+
+Despues en el intellij haces edit config de glassfish y le pones el domain2.
