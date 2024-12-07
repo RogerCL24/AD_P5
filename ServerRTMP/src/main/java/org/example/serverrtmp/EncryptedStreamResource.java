@@ -24,7 +24,7 @@ public class EncryptedStreamResource {
     @Path("/playlist.m3u8")
     @Produces("application/vnd.apple.mpegurl")
     public Response getPlaylist() {
-        File playlistFile = new File(HLS_PATH, "stream1.m3u8"); // O el nombre de tu archivo .m3u8
+        File playlistFile = new File(HLS_PATH, "stream1.m3u8"); 
         if (!playlistFile.exists()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -81,7 +81,7 @@ public class EncryptedStreamResource {
 
         try (FileInputStream fis = new FileInputStream(file)) {
             byte[] fileBytes = fis.readAllBytes();
-            return Response.ok(fileBytes)           //quitar esto
+            return Response.ok(fileBytes, "video/mp2t")           //quitar esto
                     .header("Content-Disposition", "attachment; filename=" + fileName)
                     .header("Access-Control-Allow-Origin", "*")
                     .build();
@@ -92,6 +92,7 @@ public class EncryptedStreamResource {
 
             return Response.ok(encryptedBytes)
                     .header("Content-Disposition", "attachment; filename=" + fileName)
+                    .header("Access-Control-Allow-Origin", "*")
                     .build();*/
         } catch (IOException e) {
             e.printStackTrace();
