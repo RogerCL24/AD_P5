@@ -6,11 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reproductor de Video en Vivo</title>
 
-    <!-- Enlace al CSS de Video.js -->
-    <link href="https://vjs.zencdn.net/7.13.3/video-js.css" rel="stylesheet">
-
-    <!-- Enlace al JavaScript de Video.js -->
-    <script src="https://vjs.zencdn.net/7.13.3/video.min.js"></script>
+    <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet">
+    <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
 </head>
 <body>
 <h1>Reproducción de Video HLS en Vivo</h1>
@@ -23,7 +20,7 @@
 
 <script>
     // Inicializar el reproductor de Video.js
-    var player = videojs('video_player', {
+    const player = videojs('video_player', {
         controls: true,
         autoplay: true,
         preload: 'auto'
