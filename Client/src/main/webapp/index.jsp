@@ -12,14 +12,12 @@
 <body>
 <h1>Reproducción de Video HLS en Vivo</h1>
 
-<!-- Contenedor para el reproductor -->
 <video id="video_player" class="video-js vjs-default-skin" controls width="800" height="450">
         <source src="http://localhost:8080/Client-1.0-SNAPSHOT/videoStream/playlist.m3u8" type="application/x-mpegURL">
     Tu navegador no soporta la reproducción de este video.
 </video>
 
 <script>
-    // Inicializar el reproductor de Video.js
     const player = videojs('video_player', {
         controls: true,
         autoplay: true,
